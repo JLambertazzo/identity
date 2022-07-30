@@ -1,11 +1,11 @@
 import express, { NextFunction, Request, Response } from 'express'
 import request from 'request'
 
-const PORT = parseInt(process.env.PORT || '') || 8080
+const PORT = parseInt(process.env.PORT || '') || 3000
 const PROXY = 'http'
 const HOST = 'localhost'
 
-const identity = (req: Request, res: Response) => res.send(req.body)
+const identity = (req: Request, res: Response) => {console.log("SENDING", req.body);res.send(req.body)}
 const logBalanced = (serverNum: number) => (_req: Request, _res: Response, next: NextFunction) => {
     console.log(`[${serverNum}]: handling req`)
     next()
